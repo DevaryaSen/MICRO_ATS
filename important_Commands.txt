@@ -1,0 +1,23 @@
+source .venv/bin/activate && alembic revision --autogenerate -m "your message"
+source .venv/bin/activate && alembic upgrade head
+
+# activate venv first (always)
+source .venv/bin/activate
+
+# after changing models — generate new migration
+alembic revision --autogenerate -m "describe what changed"
+
+# apply migrations to DB
+alembic upgrade head
+
+# check current migration state
+alembic current
+
+# see migration history
+alembic history
+
+# rollback one migration
+alembic downgrade -1
+
+
+uvicorn dir.main:app --reload
